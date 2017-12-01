@@ -3,40 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>List Data</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
 </head>
 <body>
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-3">List User</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-  </div>
-</div>
-<div class="container">
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">User ID</th>
-            <th scope="col">Username</th>
-            <th scope="col">Password</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for row in data %}
-        <tr>
-            <td>#</td>
-            <td>{{ row[0]}}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-            <td><a href="/edit/{{row[0]}}">EDIT</a></td>
-            <td><a href="/delete/{{row[0]}}">DELETE</a></td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Iseng-Iseng</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/list">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/form">Add</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+<div class="container">
+    <br>
+    <form>
+        <h4>Hello There!</h4>
+        <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo
+            cursus magna, <a href="#" class="alert-link">vel scelerisque nisl consectetur et</a>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p><button type="submit" class="btn btn-primary" formaction="/form">Add New User</button></p>
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark" align="center">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">User ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col" colspan="2">Action</th>
+            </tr>
+            </thead>
+            <tbody align="center">
+            {% for row in data %}
+            <tr>
+                <td>#</td>
+                <td>{{ row[0]}}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>
+                    <button type="submit" class="btn btn-info" formaction="/edit/{{row[0]}}">Edit</button>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-danger" formaction="/delete/{{row[0]}}">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </form>
 </div>
 
 </body>

@@ -12,12 +12,7 @@ mysql = MySQL(app)
 
 @app.route('/')
 def index():
-    cur = mysql.connection.cursor()
-    cur.execute('''SELECT * FROM user''')
-    rv = cur.fetchall()
-    for row in rv :
-        print(row)
-    return str(rv[0])
+    return redirect('/list')
 
 @app.route('/addaction', methods=['GET', 'POST'])
 def addaction():
